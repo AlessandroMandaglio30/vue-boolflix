@@ -1,6 +1,6 @@
 <template>
   <main>
-    <CardContainer />
+    <CardContainer :film="film" />
   </main>
 </template>
 
@@ -10,6 +10,10 @@ export default {
   name: "Main",
   components: {
     CardContainer,
+  },
+  props: {
+    film: Array,
+    series: Array,
   },
 };
 </script>

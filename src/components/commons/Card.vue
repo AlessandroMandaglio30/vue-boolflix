@@ -1,6 +1,12 @@
 <template>
   <div>
     <ul>
+      <li>
+        <img
+          :src="'https://image.tmdb.org/t/p/w342/' + films.backdrop_path"
+          :alt="films.title || films.name"
+        />
+      </li>
       <li>{{ films.title || films.name }}</li>
       <li>{{ films.original_title || films.original_name }}</li>
       <li>{{ bandiera() }}</li>
