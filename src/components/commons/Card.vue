@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul>
+    <ul v-if="this.films.vote_average > 0">
       <li v-if="films.backdrop_path == null">
         <img
           src="http://www.persefone.it/blog/wp-content/themes/photobook/images/blank.png"
@@ -14,14 +14,19 @@
         />
       </li>
       <div class="testo-card">
-        <li><span>Titolo: </span>{{ films.title || films.name }}</li>
         <li>
-          <span>Titolo originale: </span>
-          <p>{{ films.original_title || films.original_name }}</p>
+          <span>Titolo: </span>
+          <p>{{ films.title || films.name }}</p>
         </li>
         <li>
-          <span>Voti: </span>
-          <p>{{ films.vote_average }}</p>
+          <span>Voti: </span><br />
+          <div
+            class="star"
+            v-for="index in votos(films.vote_average)"
+            :key="index"
+          >
+            <i class="fas fa-star"></i>
+          </div>
         </li>
         <li><span>Lingua: </span>{{ bandiera() }}</li>
       </div>
@@ -51,6 +56,9 @@ export default {
         return this.films.original_language;
       }
     },
+    votos(voto) {
+      return (voto = Math.ceil(voto / 2));
+    },
   },
 };
 </script>
@@ -61,11 +69,16 @@ ul {
   padding: 0;
   position: relative;
   width: calc((100% / 8) - 10px);
+  margin: 10px;
   img {
     height: 300px;
     width: 200px;
     object-fit: cover;
     border: 1px solid;
+  }
+  .star {
+    display: inline-block;
+    color: yellow;
   }
 }
 .testo-card {
