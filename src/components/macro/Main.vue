@@ -1,6 +1,6 @@
 <template>
   <main>
-    <CardContainer :film="film" />
+    <CardContainer :film="film" :series="series" />
   </main>
 </template>
 

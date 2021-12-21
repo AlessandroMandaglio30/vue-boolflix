@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @ricerca="ricerca" />
-    <Main :film="film" />
+    <Main :film="film" :series="series" />
   </div>
 </template>
 
@@ -61,4 +61,5 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./assets/style/global.scss";
 </style>
